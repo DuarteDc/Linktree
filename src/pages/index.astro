@@ -25,7 +25,11 @@ const user = await contentfulClient.getEntries<UserResponse>({
 });
 ---
 
-<Layout title="Eduardo Duarte">
+<Layout
+  title="Eduardo Duarte"
+  description={user?.items[0]?.fields?.description}
+  image={user?.items[0]?.fields.imageProfile.fields.file.url}
+>
   <main class="container mx-auto text-white">
     <Header user={user?.items[0]?.fields} />
     <LinkSection title="Personal Links" dataLinks={personalLinks} />

@@ -1,0 +1,28 @@
+---
+const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Eduardo Duarte",
+    "url": "https://master--glowing-sorbet-3234df.netlify.app/"
+}, undefined, 3)
+
+const schemaData = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Eduardo Duarte",
+    "url": "https://master--glowing-sorbet-3234df.netlify.app/",
+    "sameAs": [
+                "https://github.com/DuarteDc",
+                "https://www.linkedin.com/in/duartedc/",
+                "https://www.facebook.com/eduardo.duarte.clemte",
+                "https://www.instagram.com/duartebv17/"
+            ],
+    "image": "https://images.ctfassets.net/ur4rinp0exxd/5Vpll9FNbxvoCEVu7dBHLL/182bbf47eef41a95e776b5fe1d63f62c/Me.jpeg"
+  })
+
+---
+<script type="application/ld+json" set:html={schema}>
+</script>
+
+<script type="application/ld+json" set:html={schemaData}>
+</script>

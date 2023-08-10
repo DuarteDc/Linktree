@@ -9,7 +9,6 @@ interface Props {
 
 const { title, links, icon } = Astro.props;
 
-const html = await Astro.slots.render("default");
 ---
 
 <SocialMediaIcon title={title} link={links}>

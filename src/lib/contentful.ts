@@ -12,7 +12,6 @@ export interface LinksItemResponse {
         title: EntryFieldTypes.Text
         link: EntryFieldTypes.Text,
         icon: EntryFieldTypes.Text,
-        status: EntryFieldTypes.Text,
     }
 }
 
@@ -20,10 +19,10 @@ export interface UserResponse {
     contentTypeId: ContentTypes.User,
     fields: {
         name: EntryFieldTypes.Text
-        last_name: EntryFieldTypes.Text,
+        lastName: EntryFieldTypes.Text,
         description: EntryFieldTypes.Text,
         resume: EntryFieldTypes.Object,
-        image_profile: EntryFieldTypes.Object,
+        imageProfile: EntryFieldTypes.Object,
     }
 }
 
