@@ -29,8 +29,8 @@ const user = await contentfulClient.getEntries<UserResponse>({
   <main class="container mx-auto text-white">
     <Header 
       user={user.items[0].fields}
-    />
-    <LinkSection title="Personal Links" dataLinks={personalLinks} />
+      />
+      <LinkSection title="Personal Links" dataLinks={personalLinks} />
     <LinkSection title="Profesional Links" dataLinks={profesionalLinks} />
   </main>
 </Layout>

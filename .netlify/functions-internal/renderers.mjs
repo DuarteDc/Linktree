@@ -1,4 +1,4 @@
-import { s as server_default } from './chunks/astro.a225463d.mjs';
+import { s as server_default } from './chunks/astro.56b6d10d.mjs';
 import 'cookie';
 import 'kleur/colors';
 import '@astrojs/internal-helpers/path';

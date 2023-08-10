@@ -164,7 +164,7 @@ function createComponent(arg1, moduleId, propagation) {
   }
 }
 
-const ASTRO_VERSION = "2.10.3";
+const ASTRO_VERSION = "2.10.4";
 
 function createAstroGlobFn() {
   const globHandler = (importMetaGlobResult) => {
@@ -302,6 +302,7 @@ function unescapeHTML(str) {
 const PROP_TYPE = {
   Value: 0,
   JSON: 1,
+  // Actually means Array
   RegExp: 2,
   Date: 3,
   Map: 4,
@@ -350,16 +351,10 @@ function convertToSerializedForm(value, metadata = {}, parents = /* @__PURE__ */
       return [PROP_TYPE.RegExp, value.source];
     }
     case "[object Map]": {
-      return [
-        PROP_TYPE.Map,
-        JSON.stringify(serializeArray(Array.from(value), metadata, parents))
-      ];
+      return [PROP_TYPE.Map, serializeArray(Array.from(value), metadata, parents)];
     }
     case "[object Set]": {
-      return [
-        PROP_TYPE.Set,
-        JSON.stringify(serializeArray(Array.from(value), metadata, parents))
-      ];
+      return [PROP_TYPE.Set, serializeArray(Array.from(value), metadata, parents)];
     }
     case "[object BigInt]": {
       return [PROP_TYPE.BigInt, value.toString()];
@@ -368,16 +363,16 @@ function convertToSerializedForm(value, metadata = {}, parents = /* @__PURE__ */
       return [PROP_TYPE.URL, value.toString()];
     }
     case "[object Array]": {
-      return [PROP_TYPE.JSON, JSON.stringify(serializeArray(value, metadata, parents))];
+      return [PROP_TYPE.JSON, serializeArray(value, metadata, parents)];
     }
     case "[object Uint8Array]": {
-      return [PROP_TYPE.Uint8Array, JSON.stringify(Array.from(value))];
+      return [PROP_TYPE.Uint8Array, Array.from(value)];
     }
     case "[object Uint16Array]": {
-      return [PROP_TYPE.Uint16Array, JSON.stringify(Array.from(value))];
+      return [PROP_TYPE.Uint16Array, Array.from(value)];
     }
     case "[object Uint32Array]": {
-      return [PROP_TYPE.Uint32Array, JSON.stringify(Array.from(value))];
+      return [PROP_TYPE.Uint32Array, Array.from(value)];
     }
     default: {
       if (value !== null && typeof value === "object") {
@@ -585,7 +580,7 @@ function isHeadAndContent(obj) {
   return typeof obj === "object" && !!obj[headAndContentSym];
 }
 
-var astro_island_prebuilt_default = `(()=>{var d;{let p={0:t=>t,1:t=>JSON.parse(t,a),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,a)),5:t=>new Set(JSON.parse(t,a)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},a=(t,r)=>{if(t===""||!Array.isArray(r))return r;let[s,i]=r;return s in p?p[s](i):void 0};customElements.get("astro-island")||customElements.define("astro-island",(d=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=async()=>{var o;if(!this.hydrator||!this.isConnected)return;let r=(o=this.parentElement)==null?void 0:o.closest("astro-island[ssr]");if(r){r.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let s=this.querySelectorAll("astro-slot"),i={},c=this.querySelectorAll("template[data-astro-template]");for(let e of c){let n=e.closest(this.tagName);n!=null&&n.isSameNode(this)&&(i[e.getAttribute("data-astro-template")||"default"]=e.innerHTML,e.remove())}for(let e of s){let n=e.closest(this.tagName);n!=null&&n.isSameNode(this)&&(i[e.getAttribute("name")||"default"]=e.innerHTML)}let l;try{l=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),a):{}}catch(e){let n=this.getAttribute("component-url")||"<unknown>",h=this.getAttribute("component-export");throw h&&(n+=\` (export \${h})\`),console.error(\`[hydrate] Error parsing props for component \${n}\`,this.getAttribute("props"),e),e}await this.hydrator(this)(this.Component,l,i,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((r,s)=>{s.disconnect(),setTimeout(()=>this.childrenConnectedCallback(),0)}).observe(this,{childList:!0})}async childrenConnectedCallback(){let r=this.getAttribute("before-hydration-url");r&&await import(r),this.start()}start(){let r=JSON.parse(this.getAttribute("opts")),s=this.getAttribute("client");if(Astro[s]===void 0){window.addEventListener(\`astro:\${s}\`,()=>this.start(),{once:!0});return}Astro[s](async()=>{let i=this.getAttribute("renderer-url"),[c,{default:l}]=await Promise.all([import(this.getAttribute("component-url")),i?import(i):()=>()=>{}]),o=this.getAttribute("component-export")||"default";if(!o.includes("."))this.Component=c[o];else{this.Component=c;for(let e of o.split("."))this.Component=this.Component[e]}return this.hydrator=l,this.hydrate},r,this)}attributeChangedCallback(){this.hydrate()}},d.observedAttributes=["props"],d))}})();`;
+var astro_island_prebuilt_default = `(()=>{var d;{let p={0:t=>u(t),1:t=>l(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(l(t)),5:t=>new Set(l(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},h=t=>{let[e,n]=t;return e in p?p[e](n):void 0},l=t=>t.map(h),u=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,n])=>[e,h(n)]));customElements.get("astro-island")||customElements.define("astro-island",(d=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=async()=>{var i;if(!this.hydrator||!this.isConnected)return;let e=(i=this.parentElement)==null?void 0:i.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let n=this.querySelectorAll("astro-slot"),o={},a=this.querySelectorAll("template[data-astro-template]");for(let r of a){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(o[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of n){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(o[r.getAttribute("name")||"default"]=r.innerHTML)}let c;try{c=this.hasAttribute("props")?u(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=\` (export \${y})\`),console.error(\`[hydrate] Error parsing props for component \${s}\`,this.getAttribute("props"),r),r}await this.hydrator(this)(this.Component,c,o,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((e,n)=>{n.disconnect(),setTimeout(()=>this.childrenConnectedCallback(),0)}).observe(this,{childList:!0})}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),n=this.getAttribute("client");if(Astro[n]===void 0){window.addEventListener(\`astro:\${n}\`,()=>this.start(),{once:!0});return}Astro[n](async()=>{let o=this.getAttribute("renderer-url"),[a,{default:c}]=await Promise.all([import(this.getAttribute("component-url")),o?import(o):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(let r of i.split("."))this.Component=this.Component[r]}return this.hydrator=c,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},d.observedAttributes=["props"],d))}})();`;
 
 const ISLAND_STYLES = `<style>astro-island,astro-slot,astro-static-slot{display:contents}</style>`;
 function determineIfNeedsHydrationScript(result) {

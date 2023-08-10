@@ -1,4 +1,4 @@
-/* empty css                           */import { c as createAstro, a as createComponent, r as renderTemplate, b as addAttribute, d as renderHead, e as renderSlot, m as maybeRenderHead, f as renderComponent, F as Fragment, u as unescapeHTML } from '../astro.a225463d.mjs';
+/* empty css                           */import { c as createAstro, a as createComponent, r as renderTemplate, b as addAttribute, d as renderHead, e as renderSlot, m as maybeRenderHead, f as renderComponent, F as Fragment, u as unescapeHTML } from '../astro.56b6d10d.mjs';
 import contentful from 'contentful';
 import 'cookie';
 import 'kleur/colors';
@@ -234,7 +234,7 @@ const $$Index = createComponent(async ($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Eduardo Duarte" }, { "default": ($$result2) => renderTemplate`
   ${maybeRenderHead()}<main class="container mx-auto text-white">
     ${renderComponent($$result2, "Header", $$Header, { "user": user.items[0].fields })}
-    ${renderComponent($$result2, "LinkSection", $$LinkSection, { "title": "Personal Links", "dataLinks": personalLinks })}
+      ${renderComponent($$result2, "LinkSection", $$LinkSection, { "title": "Personal Links", "dataLinks": personalLinks })}
     ${renderComponent($$result2, "LinkSection", $$LinkSection, { "title": "Profesional Links", "dataLinks": profesionalLinks })}
   </main>
 ` })}`;
