@@ -1,7 +1,10 @@
 ---
+export const prerender = false;
+
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/home/Header.astro";
 import LinkSection from "../components/home/LinkSection.astro";
+
 
 import { type LinksItemResponse, type UserResponse,  ContentTypes, contentfulClient } from "../lib/contentful";
 
@@ -18,6 +21,7 @@ const profesionalLinks = await contentfulClient.getEntries<LinksItemResponse>({
 const user = await contentfulClient.getEntries<UserResponse>({
   content_type: ContentTypes.User
 });
+
 
 ---
 

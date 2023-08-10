@@ -9,6 +9,6 @@ import 'mime';
 import 'string-width';
 import 'html-escaper';
 
-const page = () => import('./pages/index.astro.2e5a1e09.mjs');
+const page = () => import('./pages/index.astro.50731f73.mjs');
 
 export { page };

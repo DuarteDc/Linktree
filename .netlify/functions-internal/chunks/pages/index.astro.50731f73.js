@@ -216,6 +216,7 @@ const contentfulClient = contentful.createClient({
 });
 
 const $$Astro = createAstro();
+const prerender = false;
 const $$Index = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
@@ -242,4 +243,4 @@ const $$Index = createComponent(async ($$result, $$props, $$slots) => {
 const $$file = "/home/duartebv/Documentos/Astro/linktree/src/pages/index.astro";
 const $$url = "";
 
-export { $$Index as default, $$file as file, $$url as url };
+export { $$Index as default, $$file as file, prerender, $$url as url };
