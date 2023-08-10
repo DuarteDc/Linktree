@@ -1,36 +1,34 @@
 ---
-export const prerender = false;
-
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/home/Header.astro";
 import LinkSection from "../components/home/LinkSection.astro";
 
-
-import { type LinksItemResponse, type UserResponse,  ContentTypes, contentfulClient } from "../lib/contentful";
+import {
+  type LinksItemResponse,
+  type UserResponse,
+  ContentTypes,
+  contentfulClient,
+} from "../lib/contentful";
 
 const personalLinks = await contentfulClient.getEntries<LinksItemResponse>({
   content_type: ContentTypes.PersonalLinks,
-  order: ["sys.createdAt"]
+  order: ["sys.createdAt"],
 });
 
 const profesionalLinks = await contentfulClient.getEntries<LinksItemResponse>({
   content_type: ContentTypes.ProfesionalLinks,
-  order: ["sys.createdAt"]
+  order: ["sys.createdAt"],
 });
 
 const user = await contentfulClient.getEntries<UserResponse>({
-  content_type: ContentTypes.User
+  content_type: ContentTypes.User,
 });
-
-
 ---
 
 <Layout title="Eduardo Duarte">
   <main class="container mx-auto text-white">
-    <Header 
-      user={user.items[0].fields}
-      />
-      <LinkSection title="Personal Links" dataLinks={personalLinks} />
+    <Header user={user?.items[0]?.fields} />
+    <LinkSection title="Personal Links" dataLinks={personalLinks} />
     <LinkSection title="Profesional Links" dataLinks={profesionalLinks} />
   </main>
 </Layout>

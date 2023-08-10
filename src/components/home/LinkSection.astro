@@ -19,9 +19,9 @@ const { title, dataLinks } = Astro.props;
     {
       dataLinks.items.map(({ fields }) => (
         <LinksItem
-          title={fields.title}
-          links={fields.link}
-          icon={fields.icon}
+          title={fields?.title}
+          links={fields?.link}
+          icon={fields?.icon}
         />
       ))
     }
