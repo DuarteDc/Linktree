@@ -1,0 +1,29 @@
+---
+import { EntryCollection } from "contentful";
+import LinksItem from "./LinksItem.astro";
+import type { LinksItemResponse } from "../../lib/contentful";
+
+interface Props {
+  title: string;
+  dataLinks: EntryCollection<LinksItemResponse, undefined, string>;
+}
+
+const { title, dataLinks } = Astro.props;
+---
+
+<section class="my-20 lg:max-w-[1200px] lg:mx-auto mx-5">
+  <h3 class="text-white font-extrabold text-4xl mb-12">{title}</h3>
+  <div
+    class="flex flex-wrap justify-center lg:justify-start gap-10 mx-2 lg:mx-40"
+  >
+    {
+      dataLinks.items.map(({ fields }) => (
+        <LinksItem
+          title={fields.title}
+          links={fields.link}
+          icon={fields.icon}
+        />
+      ))
+    }
+  </div>
+</section>

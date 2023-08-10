@@ -1,0 +1,36 @@
+---
+import Icons from "../ui/";
+
+const { user } = Astro.props;
+---
+
+<header
+  class="grid grid-cols-1 md:grid-cols-2 mt-20 lg:mt-40 container mx-4 lg:mx-auto text-white place-items-center"
+>
+  <picture class="rounded-full overflow-hidden mx-auto w-[12rem] h-[12rem] md:w-[18rem] md:h-[18rem] lg:w-[25rem] lg:h-[25rem] bg-gray-700">
+    <img
+      src={"https:"+user.imageProfile.fields.file.url}
+      class="w-full h-full object-cover object-center"
+      alt="Eduardo Duarte"
+    />
+  </picture>
+  <div class="mt-10 md:mt-20">
+    <span class="text-4xl lg:text-8xl font-extrabold text-center lg:text-start">
+      <h1 class="text-emerald-600">{user.name}</h1>
+      <h2>{user.lastName}</h2>
+    </span>
+    <hr class="hidden md:block md:w-3/12 border-emerald-600 border-4 my-5" />
+    <p class="mt-10 md:text-lg lg:text-2xl">
+      {user.description}
+    </p>
+    <a
+      href={`https:`+ user.resume.fields.file.url}
+      download
+      type="button"
+      class="bg-emerald-600 px-5 lg:px-10 py-3 rounded-full my-5 font-bold border border-emerald-600 hover:bg-transparent transition-all duration-500 ease-out flex md:text-lg items-center mt-10 w-32 md:w-36 lg:w-48"
+    >
+      <Icons.DownloadIcon />
+      <p class="px-1 lg:px-2">Resume</p>
+    </a>
+  </div>
+</header>

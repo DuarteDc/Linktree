@@ -1,0 +1,17 @@
+---
+import SocialMediaIcon from "../ui/SocialMediaIcon.astro";
+
+interface Props {
+  title: string;
+  links: string;
+  icon: string;
+}
+
+const { title, links, icon } = Astro.props;
+
+const html = await Astro.slots.render("default");
+---
+
+<SocialMediaIcon title={title} link={links}>
+  <Fragment set:html={icon} />
+</SocialMediaIcon>
