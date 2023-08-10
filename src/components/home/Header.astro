@@ -20,17 +20,17 @@ const { user } = Astro.props;
       <h2>{user.lastName}</h2>
     </span>
     <hr class="hidden md:block md:w-3/12 border-emerald-600 border-4 my-5" />
-    <p class="mt-10 md:text-lg lg:text-2xl mx-5 text-gray-400">
+    <p class="mt-10 md:text-lg lg:text-2xl mx-2 md:mx-0 text-gray-400">
       {user.description}
     </p>
     <a
       href={`https:`+ user.resume.fields.file.url}
       download
       type="button"
-      class="bg-emerald-600 px-5 lg:px-10 py-3 rounded-full my-5 font-bold border border-emerald-600 hover:bg-transparent transition-all duration-500 ease-out flex md:text-lg items-center mt-10 w-32 md:w-36 lg:w-48"
+      class="bg-emerald-600 px-5 lg:px-10 md:py-3 py-2 rounded-full md:mb-5 font-bold border border-emerald-600 hover:bg-transparent transition-all duration-500 ease-out flex items-center mt-5 md:mt-10 w-32 md:w-36 lg:w-48 justify-center"
     >
       <Icons.DownloadIcon />
-      <p class="px-1 lg:px-2">Resume</p>
+      <p class="px-1 lg:px-2 text-xs md:text-sm lg:text-base">Resume</p>
     </a>
   </div>
 </header>
