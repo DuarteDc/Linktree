@@ -1,5 +1,5 @@
 ---
-import { GoogleAnalitycs, Seo, StructuredData } from "../components/layout/";
+import { GoogleAnalitycs, Seo, StructuredData,GoogleTagManager, NoScriptGTM } from "../components/layout/";
 
 interface Props {
   title: string;
@@ -22,9 +22,11 @@ const { title, description, image } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <Seo description={description} image={image} />
+    <GoogleTagManager />
     <StructuredData />
   </head>
   <body>
+    <NoScriptGTM />
     <slot />
     <style is:global>
       :root {
