@@ -3,17 +3,20 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/home/Header.astro";
 import LinkSection from "../components/home/LinkSection.astro";
 
-import collectionDataArray from "../services/homeServices";
+import RequestCollections from "../services/homeServices";
+import { EntryCollection } from "contentful";
+import { LinksItemResponse } from "../lib/contentful";
 
+type PersonalLinks = EntryCollection<LinksItemResponse, undefined, string>;
 
-let [ personalLinks, profesionalLinks, user ] = await Promise.all(collectionDataArray);
+let [ personalLinks, profesionalLinks, user ] = await Promise.all(RequestCollections);
 
 ---
 
 <Layout title="Eduardo Duarte" description="s" image="s">
   <main class="container mx-auto text-white">
     <Header user={user?.items[0]?.fields} />
-    <LinkSection title="Personal Links" dataLinks={personalLinks} />
-    <LinkSection title="Profesional Links" dataLinks={profesionalLinks} />
+    <LinkSection title="Personal Links" dataLinks={personalLinks as PersonalLinks} />
+    <LinkSection title="Profesional Links" dataLinks={profesionalLinks as PersonalLinks} />
   </main>
 </Layout>
