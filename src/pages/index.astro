@@ -4,31 +4,18 @@ import Header from "../components/home/Header.astro";
 import LinkSection from "../components/home/LinkSection.astro";
 
 import {
-  type LinksItemResponse,
-  type UserResponse,
-  ContentTypes,
-  contentfulClient,
-} from "../lib/contentful";
+  getPersonalLinksData,
+  getProfesionalLinksData,
+  getUserData,
+} from "../services/homeServices";
 
-const personalLinks = await contentfulClient.getEntries<LinksItemResponse>({
-  content_type: ContentTypes.PersonalLinks,
-  order: ["sys.createdAt"],
-});
-
-const profesionalLinks = await contentfulClient.getEntries<LinksItemResponse>({
-  content_type: ContentTypes.ProfesionalLinks,
-  order: ["sys.createdAt"],
-});
-
-const user = await contentfulClient.getEntries<UserResponse>({
-  content_type: ContentTypes.User,
-});
+const [ personalLinks, profesionalLinks, user ] = await Promise.all([ getPersonalLinksData, getProfesionalLinksData, getUserData ]);
 ---
 
 <Layout
   title="Eduardo Duarte"
   description={user?.items[0]?.fields?.description}
-  image={user?.items[0]?.fields.imageProfile.fields.file.url}
+  image={user?.items[0]?.fields?.imageProfile.fields.file.url}
 >
   <main class="container mx-auto text-white">
     <Header user={user?.items[0]?.fields} />
