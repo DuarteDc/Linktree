@@ -1,13 +1,9 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/home/Header.astro";
-import LinkSection from "../components/home/LinkSection.astro";
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/home/Header.astro';
+import LinkSection from '../components/home/LinkSection.astro';
 
-import {
-  getPersonalLinksData,
-  getProfesionalLinksData,
-  getUserData,
-} from "../services/homeServices";
+import { getPersonalLinksData, getProfesionalLinksData, getUserData } from '../services/homeServices';
 
 const [ personalLinks, profesionalLinks, user ] = await Promise.all([ getPersonalLinksData, getProfesionalLinksData, getUserData ]);
 ---
