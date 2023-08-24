@@ -1,18 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/home/Header.astro';
-import LinkSection from '../components/home/LinkSection.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/home/Header.astro";
+import LinkSection from "../components/home/LinkSection.astro";
 
-import { getPersonalLinksData, getProfesionalLinksData, getUserData } from '../services/homeServices';
+import collectionDataArray from "../services/homeServices";
 
-const [ personalLinks, profesionalLinks, user ] = await Promise.all([ getPersonalLinksData, getProfesionalLinksData, getUserData ]);
+
+let [ personalLinks, profesionalLinks, user ] = await Promise.all(collectionDataArray);
+
 ---
 
-<Layout
-  title="Eduardo Duarte"
-  description={user?.items[0]?.fields?.description}
-  image={user?.items[0]?.fields?.imageProfile.fields.file.url}
->
+<Layout title="Eduardo Duarte" description="s" image="s">
   <main class="container mx-auto text-white">
     <Header user={user?.items[0]?.fields} />
     <LinkSection title="Personal Links" dataLinks={personalLinks} />

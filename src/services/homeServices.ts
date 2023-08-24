@@ -1,3 +1,4 @@
+import { EntryCollection } from 'contentful';
 import { type LinksItemResponse, type UserResponse, ContentTypes, contentfulClient } from '../lib/contentful';
 
 const getPersonalLinksData = await contentfulClient.getEntries<LinksItemResponse>({
@@ -14,8 +15,9 @@ const getUserData = await contentfulClient.getEntries<UserResponse>({
     content_type: ContentTypes.User,
 });
 
-export {
-    getPersonalLinksData,
-    getProfesionalLinksData,
-    getUserData,
-}
+export default [
+    getPersonalLinksData as EntryCollection<LinksItemResponse, undefined, string>,
+    getProfesionalLinksData as EntryCollection<LinksItemResponse, undefined, string>,
+    getUserData as EntryCollection<UserResponse, undefined, string>,
+]
+
