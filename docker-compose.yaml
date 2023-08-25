@@ -4,3 +4,7 @@ services:
     build: ./
     ports: 
       - "3000:3000"
+    environment:
+      - CONTENTFUL_SPACE_ID=
+      - CONTENTFUL_DELIVERY_TOKEN=
+      - CONTENTFUL_PREVIEW_TOKEN=
